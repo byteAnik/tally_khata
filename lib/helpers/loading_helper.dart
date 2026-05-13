@@ -9,7 +9,7 @@ import 'package:tally_khata/helpers/navigation_service.dart';
 extension Loader on Future {
   Future<dynamic> waitingForLogin() async {
     showDialog(
-      context: NavigationService.context as BuildContext,
+      context: NavigationService.context,
       barrierColor: Colors.transparent,
       builder: (context) => loadingIndicatorCircle(context: context),
     );
@@ -133,9 +133,9 @@ extension Loader on Future {
       NavigationService.goBack;
       if (result) {
         showDialog(
-          context: NavigationService.context as BuildContext,
+          context: NavigationService.context,
           builder: (context) => shimmer(
-            context: NavigationService.context as BuildContext,
+            context: NavigationService.context,
             name: AssetsLotties.dataEmpty,
             size: 120,
           ),

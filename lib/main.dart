@@ -6,6 +6,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:tally_khata/constants/app_colors.dart';
 import 'package:tally_khata/constants/custome_theme.dart';
+import 'package:tally_khata/features/login/login_screen.dart';
 import 'package:tally_khata/helpers/di.dart';
 import 'package:tally_khata/helpers/helper_methods.dart';
 import 'package:tally_khata/helpers/navigation_service.dart';
@@ -75,7 +76,7 @@ class UtillScreenMobile extends StatelessWidget {
             return MediaQuery(data: MediaQuery.of(context), child: widget!);
           },
           navigatorKey: NavigationService.navigatorKey,
-          home: SplashScreen(),
+          home: LoginScreen(),
         );
       },
     );

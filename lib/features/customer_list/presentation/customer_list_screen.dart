@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/route_manager.dart';
+import 'package:tally_khata/features/add_customer/presentation/add_customer_screen.dart';
 import 'package:tally_khata/features/customer_list/presentation/widgets/customer_clip.dart';
 import 'package:tally_khata/features/customer_list/presentation/widgets/customer_list_item.dart';
 import 'package:tally_khata/features/customer_list/presentation/widgets/customer_search_flield.dart';
@@ -166,7 +169,9 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Get.to(() => AddCustomerScreen());
+        },
         backgroundColor: const Color(0xFF10B981),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.r),

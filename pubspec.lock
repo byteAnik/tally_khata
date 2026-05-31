@@ -257,6 +257,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.2"
+  country_city_kit:
+    dependency: "direct main"
+    description:
+      name: country_city_kit
+      sha256: efe2ee7cfe615c72f5f5f3bd71d096e10bbb838d1ab569e761f5b99db0f2bd0b
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.1"
   country_picker:
     dependency: "direct main"
     description:

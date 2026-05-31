@@ -4,7 +4,6 @@ import 'package:tally_khata/constants/app_colors.dart';
 import 'package:tally_khata/constants/text_font_style.dart';
 import 'package:tally_khata/helpers/ui_helpers.dart';
 
-
 class CommonButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
@@ -50,63 +49,57 @@ class CommonButton extends StatelessWidget {
     );
 
     final buttonContent = Row(
-  mainAxisSize: MainAxisSize.min,
-  mainAxisAlignment: MainAxisAlignment.center,
-  children: [
-    /// LEFT ICON (asset)
-    if (assetIconPath != null) ...[
-      Image.asset(
-        assetIconPath!,
-        height: 20.w,
-        width: 20.w,
-        color: textColor ?? AppColors.cFFFFFF,
-      ),
-      UIHelper.horizontalSpace(10.w),
-    ],
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        /// LEFT ICON (asset)
+        if (assetIconPath != null) ...[
+          Image.asset(
+            assetIconPath!,
+            height: 20.w,
+            width: 20.w,
+            color: textColor ?? AppColors.cFFFFFF,
+          ),
+          UIHelper.horizontalSpace(10.w),
+        ],
 
-    /// Custom icon (optional)
-    if (icon != null) ...[
-      icon!,
-      UIHelper.horizontalSpace(8.w),
-    ],
+        /// Custom icon (optional)
+        if (icon != null) ...[icon!, UIHelper.horizontalSpace(8.w)],
 
-    /// TEXT
-    textWidget,
+        /// TEXT
+        textWidget,
 
-    /// Suffix icon (right side if needed)
-    if (suffixIcon != null) ...[
-      UIHelper.horizontalSpace(8.w),
-      suffixIcon!,
-    ],
-  ],
-);
-
+        /// Suffix icon (right side if needed)
+        if (suffixIcon != null) ...[UIHelper.horizontalSpace(8.w), suffixIcon!],
+      ],
+    );
 
     return SizedBox(
       width: double.infinity,
-      height: height ?? 55.h,
-      child: isOutlined
-          ? OutlinedButton(
-              onPressed: onPressed,
-              style: OutlinedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(borderRadius ?? 28.r),
-                ),
-                side: BorderSide(color: borderColor ?? AppColors.c4ECDC4),
+      height: height ?? 58.h,
+      child:
+          // ? OutlinedButton(
+          //     onPressed: onPressed,
+          //     style: OutlinedButton.styleFrom(
+          //       backgroundColor: AppColors.c0F9D69,
+          //       shape: RoundedRectangleBorder(
+          //         borderRadius: BorderRadius.circular(borderRadius ?? 18.r),
+          //       ),
+          //       side: BorderSide(color: borderColor ?? AppColors.c4ECDC4),
+          //     ),
+          //     child: buttonContent,
+          //   )
+          ElevatedButton(
+            onPressed: onPressed,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: backgroundColor ?? AppColors.c0F9D69,
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(borderRadius ?? 18.r),
               ),
-              child: buttonContent,
-            )
-          : ElevatedButton(
-              onPressed: onPressed,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: backgroundColor ?? AppColors.cFF5A2C,
-                elevation: 4,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(borderRadius ?? 16.r),
-                ),
-              ),
-              child: buttonContent,
             ),
+            child: buttonContent,
+          ),
     );
   }
 }

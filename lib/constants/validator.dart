@@ -128,13 +128,24 @@ String? passportNumberValidator(String? value) {
   return null;
 }
 
-/// Validates a 4-digit numeric PIN code.
+/// Validates a 5-digit numeric PIN code.
 String? validate5DigitPinCode(String? value) {
   if (value == null || value.isEmpty) {
     return 'Enter the 5-digit code';
   }
   if (!RegExp(r'^\d{5}$').hasMatch(value)) {
     return '5-digit code is invalid';
+  }
+  return null;
+}
+
+/// Validates a 4-digit numeric PIN code.
+String? validate4DigitPinCode(String? value) {
+  if (value == null || value.isEmpty) {
+    return 'Enter the 4-digit code';
+  }
+  if (!RegExp(r'^\d{4}$').hasMatch(value)) {
+    return '4-digit code is invalid';
   }
   return null;
 }

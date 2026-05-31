@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/state_manager.dart';
+import 'package:tally_khata/common_wigdets/common_button.dart';
 import 'package:tally_khata/constants/app_colors.dart';
+import 'package:tally_khata/features/otp_verify/presentation/otp_verify_screen.dart';
 import 'package:tally_khata/helpers/ui_helpers.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -19,7 +23,7 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 40.h),
+                UIHelper.verticalSpace(40.h),
 
                 // ── Logo ────────────────────────────────────────────────────
                 Container(
@@ -46,7 +50,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
 
-                SizedBox(height: 34.h),
+                UIHelper.verticalSpace(34.h),
 
                 // ── Title ───────────────────────────────────────────────────
                 Text(
@@ -59,7 +63,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
 
-                SizedBox(height: 12.h),
+                UIHelper.verticalSpace(12.h),
 
                 // ── Subtitle ────────────────────────────────────────────────
                 Text(
@@ -72,7 +76,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
 
-                SizedBox(height: 38.h),
+                UIHelper.verticalSpace(38.h),
 
                 // ── Label ───────────────────────────────────────────────────
                 Text(
@@ -85,7 +89,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
 
-                SizedBox(height: 14.h),
+                UIHelper.verticalSpace(14.h),
 
                 // ── Phone Field ─────────────────────────────────────────────
                 Container(
@@ -149,30 +153,14 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
 
-                SizedBox(height: 34.h),
+                UIHelper.verticalSpace(34.h),
 
                 // ── Button ──────────────────────────────────────────────────
-                SizedBox(
-                  width: double.infinity,
-                  height: 58.h,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      elevation: 0,
-                      backgroundColor: const Color(0xFF0F9D69),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.r),
-                      ),
-                    ),
-                    child: Text(
-                      'Send OTP / ওটিপি পাঠান',
-                      style: TextStyle(
-                        fontSize: 19.sp,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
+                CommonButton(
+                  text: 'Contiune',
+                  onPressed: () {
+                    Get.to(() => OtpVerifyScreen());
+                  },
                 ),
 
                 SizedBox(height: 240.h),

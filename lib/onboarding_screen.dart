@@ -2,6 +2,8 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/route_manager.dart';
+import 'package:tally_khata/features/login/login_screen.dart';
 
 // ── Dummy List ────────────────────────────────────────────────────────────────
 final List<Map<String, dynamic>> onboardingList = [
@@ -47,7 +49,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         duration: const Duration(milliseconds: 350),
         curve: Curves.easeInOut,
       );
-    } else {}
+    } else {
+      Get.to(() => LoginScreen());
+    }
   }
 
   void _skip() {

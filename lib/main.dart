@@ -6,13 +6,14 @@ import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:tally_khata/constants/app_colors.dart';
 import 'package:tally_khata/constants/custome_theme.dart';
-import 'package:tally_khata/features/login/login_screen.dart';
-import 'package:tally_khata/features/login/signup/presentation/signup_screen.dart';
+import 'package:tally_khata/features/customer_list/presentation/customer_list_screen.dart';
+import 'package:tally_khata/features/home/presentation/home_screen.dart';
 import 'package:tally_khata/features/otp_verify/presentation/otp_verify_screen.dart';
 import 'package:tally_khata/helpers/di.dart';
 import 'package:tally_khata/helpers/helper_methods.dart';
 import 'package:tally_khata/helpers/navigation_service.dart';
 import 'package:tally_khata/helpers/register_provider.dart';
+import 'package:tally_khata/home_screen.dart';
 import 'package:tally_khata/networks/dio/dio.dart';
 import 'package:tally_khata/splash_screen.dart';
 
@@ -78,7 +79,7 @@ class UtillScreenMobile extends StatelessWidget {
             return MediaQuery(data: MediaQuery.of(context), child: widget!);
           },
           navigatorKey: NavigationService.navigatorKey,
-          home: OtpVerifyScreen(),
+          home: CustomerListScreen(),
         );
       },
     );

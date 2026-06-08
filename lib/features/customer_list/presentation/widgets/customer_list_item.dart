@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -65,16 +66,37 @@ class CustomerListItem extends StatelessWidget {
               color: avatarColor.withOpacity(0.1),
               shape: BoxShape.circle,
             ),
-            child: Center(
-              child: Text(
-                customer['avatarText'],
-                style: TextStyle(
-                  color: avatarColor,
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+            child: customer['imagePath'] != null &&
+                    customer['imagePath'].toString().isNotEmpty
+                ? ClipRRect(
+                    borderRadius: BorderRadius.circular(24.w),
+                    child: Image.file(
+                      File(customer['imagePath']),
+                      width: 48.w,
+                      height: 48.w,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) => Center(
+                        child: Text(
+                          customer['avatarText'],
+                          style: TextStyle(
+                            color: avatarColor,
+                            fontSize: 20.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                : Center(
+                    child: Text(
+                      customer['avatarText'],
+                      style: TextStyle(
+                        color: avatarColor,
+                        fontSize: 20.sp,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
           ),
           SizedBox(width: 14.w),
 

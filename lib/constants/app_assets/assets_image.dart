@@ -53,6 +53,7 @@ class AssetsImages {
   static String splashLogo = 'assets/images/splash_logo.png';
   static String joloImage = 'assets/images/jolo_image.jpg'; 
   static String backgroundBlurImage = 'assets/images/background_blur_image.png';
+  static String anik = 'assets/images/anik.jpg'; 
 
 
 

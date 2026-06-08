@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomerSearchFlield extends StatelessWidget {
-  const CustomerSearchFlield({super.key});
+  final ValueChanged<String>? onChanged;
+  final TextEditingController? controller;
+
+  const CustomerSearchFlield({
+    super.key,
+    this.onChanged,
+    this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +21,8 @@ class CustomerSearchFlield extends StatelessWidget {
         border: Border.all(color: const Color(0xFFE2E8F0)),
       ),
       child: TextField(
+        controller: controller,
+        onChanged: onChanged,
         style: const TextStyle(color: Color(0xFF0F172A)),
         decoration: InputDecoration(
           hintText: 'নাম বা ফোন নম্বর...',

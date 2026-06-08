@@ -17,4 +17,8 @@ class AssetsIcons {
   static String congnitiveIcon = 'assets/icons/cognitive_icon.png';
   static String chartIcon = 'assets/icons/chart_icon.png';
   static String analyzeIcon = 'assets/icons/analyze_icon.png';
+
+  static String nagadIcon = 'assets/icons/nagad_icon.png';
+  static String bKashIcon = 'assets/icons/bkash_icon.png';
+  static String cardIcon = 'assets/icons/card_icon.png';
 }

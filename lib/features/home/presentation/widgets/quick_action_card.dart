@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:tally_khata/features/add_remaining_amount/presentation/add_remaining_amount_screen.dart';
 import 'package:tally_khata/features/customer_list/presentation/customer_list_screen.dart';
 
 class QuickActionCard extends StatelessWidget {
@@ -56,6 +57,12 @@ class QuickActionCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(16.r),
           onTap: () {
             // 👉 Index based navigation
+            if (index == 0) {
+              Get.to(() => AddRemainingAmountScreen());
+            }
+            if (index == 1) {
+              
+            }
             if (index == 2) {
               Get.to(() => CustomerListScreen());
             }

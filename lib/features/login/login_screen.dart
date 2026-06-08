@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
 import 'package:tally_khata/common_wigdets/common_button.dart';
 import 'package:tally_khata/constants/app_colors.dart';
 import 'package:tally_khata/features/otp_verify/presentation/otp_verify_screen.dart';

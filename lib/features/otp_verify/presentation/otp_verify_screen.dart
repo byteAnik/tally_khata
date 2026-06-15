@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:pinput/pinput.dart';
 import 'package:tally_khata/common_wigdets/common_button.dart';
 import 'package:tally_khata/constants/app_colors.dart';
 import 'package:tally_khata/constants/validator.dart';
+import 'package:tally_khata/features/home/presentation/home_screen.dart';
 import 'package:tally_khata/helpers/ui_helpers.dart';
 
 class OtpVerifyScreen extends StatefulWidget {
@@ -45,7 +48,7 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 UIHelper.verticalSpace(40.h),
-                
+
                 // ── Icon (Matches Login Screen) ─────────────────────────────
                 Container(
                   height: 56.h,
@@ -83,7 +86,7 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                     height: 1.2,
                   ),
                 ),
-                
+
                 UIHelper.verticalSpace(12.h),
 
                 // ── Subtitle (Matches Login Screen) ─────────────────────────
@@ -96,9 +99,9 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                     height: 1.6,
                   ),
                 ),
-                
+
                 UIHelper.verticalSpace(38.h),
-                
+
                 // ── OTP Field ───────────────────────────────────────────────
                 Center(
                   child: Pinput(
@@ -108,7 +111,10 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                     defaultPinTheme: defaultPinTheme,
                     focusedPinTheme: defaultPinTheme.copyWith(
                       decoration: defaultPinTheme.decoration!.copyWith(
-                        border: Border.all(color: const Color(0xFF10B981), width: 2),
+                        border: Border.all(
+                          color: const Color(0xFF10B981),
+                          width: 2,
+                        ),
                       ),
                     ),
                     submittedPinTheme: defaultPinTheme.copyWith(
@@ -121,9 +127,12 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                 ),
 
                 UIHelper.verticalSpace(34.h),
-
-                // ── Button ──────────────────────────────────────────────────
-                CommonButton(text: 'Verify', onPressed: () {}),
+                CommonButton(
+                  text: 'Verify',
+                  onPressed: () {
+                    Get.to(() => HomeScreen1());
+                  },
+                ),
 
                 UIHelper.verticalSpace(30.h),
 
@@ -132,7 +141,8 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                   child: RichText(
                     text: const TextSpan(
                       style: TextStyle(
-                        fontSize: 15, // .sp handled automatically if RichText isn't explicitly sizing, but let's just use normal fontSize or add .sp
+                        fontSize:
+                            15, // .sp handled automatically if RichText isn't explicitly sizing, but let's just use normal fontSize or add .sp
                         fontWeight: FontWeight.w400,
                         color: Color(0xFF64748B),
                       ),

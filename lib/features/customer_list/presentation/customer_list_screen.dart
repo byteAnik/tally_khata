@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
 import 'package:provider/provider.dart';
 import 'package:tally_khata/features/add_customer/presentation/add_customer_screen.dart';
+import 'package:tally_khata/features/customer_details_flow/customer_details/presentation/customer_details_screen.dart';
 import 'package:tally_khata/features/customer_list/presentation/widgets/customer_clip.dart';
 import 'package:tally_khata/features/customer_list/presentation/widgets/customer_list_item.dart';
 import 'package:tally_khata/features/customer_list/presentation/widgets/customer_search_flield.dart';
@@ -56,9 +57,13 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
     // Filter by Chips
     List<Map<String, dynamic>> finalFiltered = searchFiltered;
     if (_selectedChipIndex == 1) {
-      finalFiltered = searchFiltered.where((c) => c['isPaid'] == false).toList();
+      finalFiltered = searchFiltered
+          .where((c) => c['isPaid'] == false)
+          .toList();
     } else if (_selectedChipIndex == 2) {
-      finalFiltered = searchFiltered.where((c) => c['statusText'].toString().contains('ওভারডিউ')).toList();
+      finalFiltered = searchFiltered
+          .where((c) => c['statusText'].toString().contains('ওভারডিউ'))
+          .toList();
     } else if (_selectedChipIndex == 3) {
       finalFiltered = searchFiltered.where((c) => c['isPaid'] == true).toList();
     }
@@ -80,7 +85,12 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
     final totalCountText = _toBengaliDigits(allCustomers.length.toString());
     final totalOutstandingText = _toBengaliDigits(totalOutstanding.toString());
 
-    final filterChips = ['সব ($totalCountText)', 'বাকি আছে', 'ওভারডিউ', 'পরিশোধ'];
+    final filterChips = [
+      'সব ($totalCountText)',
+      'বাকি আছে',
+      'ওভারডিউ',
+      'পরিশোধ',
+    ];
 
     return Scaffold(
       backgroundColor: const Color(0xFFF8FAFC),
@@ -92,31 +102,46 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
             ),
             child: Column(
               children: [
-                // ── Header ──
+                UIHelper.verticalSpace(20.h),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'গ্রাহক তালিকা',
-                          style: TextStyle(
-                            fontSize: 22.sp,
-                            fontWeight: FontWeight.w800,
-                            color: const Color(0xFF0F172A),
+                    IconButton(
+                      onPressed: () {
+                        Get.back();
+                      },
+                      icon: const Icon(
+                        Icons.arrow_back_ios_new_rounded,
+                        color: Color(0xFF0F172A),
+                        size: 22,
+                      ),
+                      
+                    ),
+
+                    SizedBox(width: 12.w),
+
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'গ্রাহক তালিকা',
+                            style: TextStyle(
+                              fontSize: 22.sp,
+                              fontWeight: FontWeight.w800,
+                              color: const Color(0xFF0F172A),
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 4.h),
-                        Text(
-                          'মোট $totalCountText জন • ৳$totalOutstandingText বাকি',
-                          style: TextStyle(
-                            fontSize: 13.sp,
-                            fontWeight: FontWeight.w500,
-                            color: const Color(0xFF64748B),
+                          SizedBox(height: 4.h),
+                          Text(
+                            'মোট $totalCountText জন • ৳$totalOutstandingText বাকি',
+                            style: TextStyle(
+                              fontSize: 13.sp,
+                              fontWeight: FontWeight.w500,
+                              color: const Color(0xFF64748B),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -175,21 +200,26 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
                               ),
                             ),
                           )
-                        : ListView.separated(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            padding: EdgeInsets.zero,
-                            itemCount: finalFiltered.length,
-                            separatorBuilder: (context, index) => const Divider(
-                              color: Color(0xFFF1F5F9),
-                              height: 1,
-                              thickness: 1,
+                        : GestureDetector(
+                          onTap: () {
+                            Get.to(()=>CustomerDetailsScreen());
+                          },
+                          child: ListView.separated(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              padding: EdgeInsets.zero,
+                              itemCount: finalFiltered.length,
+                              separatorBuilder: (context, index) => const Divider(
+                                color: Color(0xFFF1F5F9),
+                                height: 1,
+                                thickness: 1,
+                              ),
+                              itemBuilder: (context, index) {
+                                final customer = finalFiltered[index];
+                                return CustomerListItem(customer: customer);
+                              },
                             ),
-                            itemBuilder: (context, index) {
-                              final customer = finalFiltered[index];
-                              return CustomerListItem(customer: customer);
-                            },
-                          ),
+                        ),
                   ),
                 ),
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tally_khata/features/add_remaining_amount/presentation/add_remaining_amount_screen.dart';
+import 'package:tally_khata/features/customer_details_flow/customer_payment_reamining/presentation/customer_payment_reamining_screen.dart';
 import 'package:tally_khata/features/customer_list/presentation/customer_list_screen.dart';
 import 'package:tally_khata/features/report/presentation/report_screen.dart';
 
@@ -62,7 +63,7 @@ class QuickActionCard extends StatelessWidget {
               Get.to(() => AddRemainingAmountScreen());
             }
             if (index == 1) {
-              
+              Get.to(() => CustomerPaymentReaminingScreen());
             }
             if (index == 2) {
               Get.to(() => CustomerListScreen());

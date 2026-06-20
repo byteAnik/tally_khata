@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tally_khata/constants/app_assets/assets_image.dart';
+import 'package:tally_khata/constants/app_colors.dart';
 import 'package:tally_khata/helpers/ui_helpers.dart';
 
 class AddCustomerDetailsScreen extends StatelessWidget {
@@ -66,14 +67,14 @@ class AddCustomerDetailsScreen extends StatelessWidget {
                           width: 40.w,
                           decoration: BoxDecoration(
                             border: Border.all(
-                              color: Colors.white.withOpacity(0.2),
+                              color: AppColors.cFFFFFF.withOpacity(0.2),
                             ),
                             borderRadius: BorderRadius.circular(10.r),
-                            color: Colors.white.withOpacity(0.1),
+                            color: AppColors.cFFFFFF.withOpacity(0.1),
                           ),
                           child: Icon(
                             Icons.arrow_back,
-                            color: Colors.white,
+                            color: AppColors.cFFFFFF,
                             size: 20.sp,
                           ),
                         ),
@@ -83,7 +84,7 @@ class AddCustomerDetailsScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 18.sp,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color:AppColors.cFFFFFF,
                         ),
                       ),
                       // Edit Button

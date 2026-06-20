@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/route_manager.dart';
+import 'package:tally_khata/features/customer_details_flow/customer_details/presentation/customer_details_screen.dart';
 import 'package:tally_khata/features/home/presentation/widgets/blance_card.dart';
 import 'package:tally_khata/features/home/presentation/widgets/quick_action_card.dart';
 import 'package:tally_khata/features/home/presentation/widgets/transaction_item.dart';
@@ -194,19 +196,24 @@ class HomeScreen1 extends StatelessWidget {
                       ],
                     ),
 
-                    ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: dummyTransactions.length,
-                      itemBuilder: (context, index) {
-                        final tx = dummyTransactions[index];
-                        return TransactionItem(
-                          name: tx['name'],
-                          date: tx['date'],
-                          amount: tx['amount'],
-                          type: tx['type'],
-                        );
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(() => CustomerDetailsScreen());
                       },
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: dummyTransactions.length,
+                        itemBuilder: (context, index) {
+                          final tx = dummyTransactions[index];
+                          return TransactionItem(
+                            name: tx['name'],
+                            date: tx['date'],
+                            amount: tx['amount'],
+                            type: tx['type'],
+                          );
+                        },
+                      ),
                     ),
                   ],
                 ),

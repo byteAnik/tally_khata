@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
 import 'package:tally_khata/common_wigdets/common_textform_flied.dart';
 import 'package:tally_khata/constants/app_assets/assets_icons.dart';
 import 'package:tally_khata/constants/app_assets/assets_image.dart';
 import 'package:tally_khata/constants/app_colors.dart';
 import 'package:tally_khata/helpers/ui_helpers.dart';
-import 'package:svg_flutter/svg.dart';
 
 class CustomerRemainderScreen extends StatefulWidget {
   const CustomerRemainderScreen({super.key});

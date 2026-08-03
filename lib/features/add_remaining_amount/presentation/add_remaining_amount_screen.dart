@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:tally_khata/features/add_remaining_amount/presentation/controllers/add_remaining_amount_controller.dart';
 import 'package:tally_khata/common_wigdets/common_button.dart';
 import 'package:tally_khata/common_wigdets/custom_textform_flield.dart';
-import 'package:tally_khata/constants/app_assets/assets_icons.dart';
 import 'package:tally_khata/features/add_remaining_amount/presentation/widgets/add_remaining_header.dart';
 import 'package:tally_khata/features/add_remaining_amount/presentation/widgets/add_remaining_profile_card.dart';
 import 'package:tally_khata/features/add_remaining_amount/presentation/widgets/dotted_amount.dart';
+import 'package:tally_khata/features/add_remaining_amount/presentation/widgets/payment_method_option.dart';
+import 'package:tally_khata/features/add_remaining_amount/presentation/widgets/transaction_type_toggle.dart';
 import 'package:tally_khata/helpers/ui_helpers.dart';
 
 class AddRemainingAmountScreen extends StatefulWidget {
@@ -17,9 +20,7 @@ class AddRemainingAmountScreen extends StatefulWidget {
 }
 
 class _AddRemainingAmountScreenState extends State<AddRemainingAmountScreen> {
-  bool isGivingDue = true;
-  int selectedPaymentMethodIndex = 0;
-
+  final AddRemainingAmountController controller = Get.put(AddRemainingAmountController());
   final TextEditingController _amountController = TextEditingController();
   final TextEditingController _detailsController = TextEditingController();
   final TextEditingController _dateController = TextEditingController();
@@ -53,85 +54,22 @@ class _AddRemainingAmountScreenState extends State<AddRemainingAmountScreen> {
                 AddReamainingProfileCard(),
                 UIHelper.verticalSpace(24.h),
 
-                Row(
-                  children: [
-                    Expanded(
-                      child: GestureDetector(
-                        onTap: () => setState(() => isGivingDue = true),
-                        child: Container(
-                          height: 48.h,
-                          decoration: BoxDecoration(
-                            color: isGivingDue
-                                ? const Color(0xFF10B981)
-                                : Colors.white,
-                            borderRadius: BorderRadius.circular(12.r),
-                            border: Border.all(
-                              color: isGivingDue
-                                  ? const Color(0xFF10B981)
-                                  : const Color(0xFFE2E8F0),
-                            ),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'বাকি দিন',
-                              style: TextStyle(
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.w600,
-                                color: isGivingDue
-                                    ? Colors.white
-                                    : const Color(0xFF64748B),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 12.w),
-                    Expanded(
-                      child: GestureDetector(
-                        onTap: () => setState(() => isGivingDue = false),
-                        child: Container(
-                          height: 48.h,
-                          decoration: BoxDecoration(
-                            color: !isGivingDue
-                                ? const Color(0xFF10B981)
-                                : Colors.white,
-                            borderRadius: BorderRadius.circular(12.r),
-                            border: Border.all(
-                              color: !isGivingDue
-                                  ? const Color(0xFF10B981)
-                                  : const Color(0xFFE2E8F0),
-                            ),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'পেমেন্ট নিন',
-                              style: TextStyle(
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.w600,
-                                color: !isGivingDue
-                                    ? Colors.white
-                                    : const Color(0xFF64748B),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-
+                const TransactionTypeToggle(),
                 UIHelper.verticalSpace(24.h),
 
                 // ── Dotted Amount Area ──────────────────────────────────────
-                DottedAmount(
-                  isGivingDue: isGivingDue, 
-                  amountController: _amountController,
-                  ),
+                Obx(() {
+                  final isGivingDue = controller.isGivingDue.value;
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      DottedAmount(
+                        isGivingDue: isGivingDue,
+                        amountController: _amountController,
+                      ),
+                      UIHelper.verticalSpace(24.h),
 
-                UIHelper.verticalSpace(24.h),
-
-                // ── Input Fields ────────────────────────────────────────────
+                      // ── Input Fields ────────────────────────────────────────────
                 if (isGivingDue) ...[
                   CommonTextField(
                     controller: _detailsController,
@@ -171,27 +109,7 @@ class _AddRemainingAmountScreenState extends State<AddRemainingAmountScreen> {
                     ),
                   ),
                   SizedBox(height: 8.h),
-                  Row(
-                    children: [
-                      _buildPaymentMethodOption(
-                        index: 0,
-                        icon: AssetsIcons.nagadIcon,
-                        label: 'নগদ',
-                      ),
-                      SizedBox(width: 12.w),
-                      _buildPaymentMethodOption(
-                        index: 1,
-                        icon: AssetsIcons.bKashIcon,
-                        label: 'বিকাশ',
-                      ),
-                      SizedBox(width: 12.w),
-                      _buildPaymentMethodOption(
-                        index: 2,
-                        icon: AssetsIcons.cardIcon,
-                        label: 'কার্ড',
-                      ),
-                    ],
-                  ),
+                   PaymentMethodOption(),
                   UIHelper.verticalSpace(16.h),
                   CommonTextField(
                     controller: _noteController,
@@ -213,7 +131,10 @@ class _AddRemainingAmountScreenState extends State<AddRemainingAmountScreen> {
                   ),
                 ],
 
-                UIHelper.verticalSpace(24.h),
+                      UIHelper.verticalSpace(24.h),
+                    ],
+                  );
+                }),
               ],
             ),
           ),
@@ -221,56 +142,4 @@ class _AddRemainingAmountScreenState extends State<AddRemainingAmountScreen> {
       ),
     );
   }
-
-  Widget _buildPaymentMethodOption({
-    required int index,
-    required String icon,
-    required String label,
-  }) {
-    final isSelected = selectedPaymentMethodIndex == index;
-    return Expanded(
-      child: GestureDetector(
-        onTap: () => setState(() => selectedPaymentMethodIndex = index),
-        child: Container(
-          padding: EdgeInsets.symmetric(vertical: 16.h),
-          decoration: BoxDecoration(
-            color: isSelected
-                ? const Color(0xFF10B981).withOpacity(0.05)
-                : Colors.white,
-            borderRadius: BorderRadius.circular(12.r),
-            border: Border.all(
-              color: isSelected
-                  ? const Color(0xFF10B981)
-                  : const Color(0xFFE2E8F0),
-              width: 1.5,
-            ),
-          ),
-          child: Column(
-            children: [
-              Image.asset(
-                icon,
-                height: 35.sp,
-                width: 35.sp,
-              ),
-              SizedBox(height: 8.h),
-              Text(
-                label,
-                style: TextStyle(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w600,
-                  color: isSelected
-                      ? const Color(0xFF10B981)
-                      : const Color(0xFF64748B),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 }
-
-
-
-

@@ -45,8 +45,7 @@ class CommonTextFormField extends StatefulWidget {
   });
 
   @override
-  State<CommonTextFormField> createState() =>
-      _CommonTextFormFieldState();
+  State<CommonTextFormField> createState() => _CommonTextFormFieldState();
 }
 
 class _CommonTextFormFieldState extends State<CommonTextFormField> {
@@ -69,13 +68,13 @@ class _CommonTextFormFieldState extends State<CommonTextFormField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-
         /// 🔥 LABEL
         Text(
           widget.label,
           style: TextStyle(
-            fontSize: 13.sp,
-            color: Colors.white.withOpacity(0.7),
+            fontSize: 15.sp,
+            fontWeight: FontWeight.w700,
+            color: const Color(0xFF475569),
           ),
         ),
 
@@ -83,18 +82,11 @@ class _CommonTextFormFieldState extends State<CommonTextFormField> {
 
         /// 🔥 FIELD WRAPPER
         Container(
-          height: 55.h,
+          height: widget.maxLines == 1 ? 55.h : null,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(14.r),
-            gradient: LinearGradient(
-              colors: [
-                Colors.white.withOpacity(0.05),
-                Colors.white.withOpacity(0.02),
-              ],
-            ),
-            border: Border.all(
-              color: Colors.white.withOpacity(0.05),
-            ),
+            gradient: LinearGradient(colors: [Colors.white, Colors.white]),
+            border: Border.all(color: const Color(0xFFE2E8F0)),
           ),
 
           child: TextFormField(
@@ -102,10 +94,9 @@ class _CommonTextFormFieldState extends State<CommonTextFormField> {
             controller: widget.controller,
 
             /// 🔥 🔥 MAIN FIX
-            textAlignVertical: TextAlignVertical.center,
+            textAlignVertical: widget.maxLines == 1 ? TextAlignVertical.center : TextAlignVertical.top,
 
-            obscureText:
-                widget.isPassword ? _isObscured : widget.obscureText,
+            obscureText: widget.isPassword ? _isObscured : widget.obscureText,
 
             keyboardType: widget.keyboardType,
             validator: widget.validator,
@@ -118,22 +109,26 @@ class _CommonTextFormFieldState extends State<CommonTextFormField> {
             onChanged: widget.onChanged,
 
             style: TextStyle(
-              color: Colors.white,
-              fontSize: 13.sp,
+              fontSize: 15.sp,
+              fontWeight: FontWeight.w700,
+              color: const Color(0xFF475569),
             ),
 
             decoration: InputDecoration(
               hintText: widget.hintText,
 
               hintStyle: TextStyle(
-                color: Colors.white.withOpacity(0.4),
-                fontSize: 13.sp,
+                
+                fontSize: 15.sp,
+                fontWeight: FontWeight.w700,
+                color: const Color(0xFF0F172A),
               ),
 
               /// 🔥 PERFECT CENTER BALANCE
               isDense: true,
               contentPadding: EdgeInsets.symmetric(
                 vertical: 16.h,
+                horizontal: widget.prefixIcon == null ? 14.w : 0,
               ),
 
               /// 🔥 PREFIX ICON
@@ -143,23 +138,16 @@ class _CommonTextFormFieldState extends State<CommonTextFormField> {
                       child: SizedBox(
                         width: 20.w,
                         height: 20.h,
-                        child: ColorFiltered(
-                          colorFilter: ColorFilter.mode(
-                            Colors.white.withOpacity(0.6),
-                            BlendMode.srcIn,
-                          ),
-                          child: widget.prefixIcon,
-                        ),
+                        child: widget.prefixIcon,
                       ),
                     )
                   : null,
 
-              prefixIconConstraints: BoxConstraints(
-                minWidth: 40.w,
-              ),
+              prefixIconConstraints: BoxConstraints(minWidth: 40.w),
 
               /// 🔥 SUFFIX ICON (PASSWORD)
-              suffixIcon: widget.suffixIcon ??
+              suffixIcon:
+                  widget.suffixIcon ??
                   (widget.isPassword
                       ? Padding(
                           padding: EdgeInsets.only(right: 10.w),
@@ -168,7 +156,7 @@ class _CommonTextFormFieldState extends State<CommonTextFormField> {
                               _isObscured
                                   ? Icons.visibility_off
                                   : Icons.visibility,
-                              color: Colors.white.withOpacity(0.5),
+                              color: const Color(0xFF64748B),
                               size: 18.sp,
                             ),
                             onPressed: _toggleVisibility,

@@ -16,7 +16,8 @@ class CustomerPaymentReaminingScreen extends StatefulWidget {
       _CustomerPaymentReaminingScreenState();
 }
 
-class _CustomerPaymentReaminingScreenState extends State<CustomerPaymentReaminingScreen> {
+class _CustomerPaymentReaminingScreenState
+    extends State<CustomerPaymentReaminingScreen> {
   bool isGivingDue = true;
   int selectedPaymentMethodIndex = 0;
 
@@ -54,67 +55,59 @@ class _CustomerPaymentReaminingScreenState extends State<CustomerPaymentReaminin
                 UIHelper.verticalSpace(24.h),
                 // ── Dotted Amount Area ──────────────────────────────────────
                 DottedAmount(
-                  isGivingDue: isGivingDue, 
+                  isGivingDue: isGivingDue,
                   amountController: _amountController,
-                  ),
+                ),
 
                 UIHelper.verticalSpace(24.h),
 
                 // ── Input Fields ────────────────────────────────────────────
-              
-                  Text(
-                    'পেমেন্টের মাধ্যম',
-                    style: TextStyle(
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w600,
-                      color: const Color(0xFF334155),
+                Text(
+                  'পেমেন্টের মাধ্যম',
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w600,
+                    color: const Color(0xFF334155),
+                  ),
+                ),
+                SizedBox(height: 8.h),
+                Row(
+                  children: [
+                    _buildPaymentMethodOption(
+                      index: 0,
+                      icon: AssetsIcons.nagadIcon,
+                      label: 'নগদ',
                     ),
-                  ),
-                  SizedBox(height: 8.h),
-                  Row(
-                    children: [
-                      _buildPaymentMethodOption(
-                        index: 0,
-                        icon: AssetsIcons.nagadIcon,
-                        label: 'নগদ',
-                      ),
-                      SizedBox(width: 12.w),
-                      _buildPaymentMethodOption(
-                        index: 1,
-                        icon: AssetsIcons.bKashIcon,
-                        label: 'বিকাশ',
-                      ),
-                      SizedBox(width: 12.w),
-                      _buildPaymentMethodOption(
-                        index: 2,
-                        icon: AssetsIcons.cardIcon,
-                        label: 'কার্ড',
-                      ),
-                    ],
-                  ),
-                  UIHelper.verticalSpace(16.h),
-                  CommonTextField(
-                    controller: _noteController,
-                    labelText: 'নোট',
-                    hintText: 'পেমেন্টের বিবরণ...',
-                    prefixIcon: Icons.description_outlined,
-                  ),
-                  UIHelper.verticalSpace(32.h),
-                  CommonButton(
-                    text: 'পেমেন্ট নিশ্চিত করুন',
-                    icon: Icon(
-                      Icons.check,
-                      color: Colors.white,
-                      size: 20.sp,
+                    SizedBox(width: 12.w),
+                    _buildPaymentMethodOption(
+                      index: 1,
+                      icon: AssetsIcons.bKashIcon,
+                      label: 'বিকাশ',
                     ),
-                    onPressed: () {
-                      // TODO: Handle save action
-                    },
-                  ),
-                ],
-
-             
-              
+                    SizedBox(width: 12.w),
+                    _buildPaymentMethodOption(
+                      index: 2,
+                      icon: AssetsIcons.cardIcon,
+                      label: 'কার্ড',
+                    ),
+                  ],
+                ),
+                UIHelper.verticalSpace(16.h),
+                CommonTextField(
+                  controller: _noteController,
+                  labelText: 'নোট',
+                  hintText: 'পেমেন্টের বিবরণ...',
+                  prefixIcon: Icons.description_outlined,
+                ),
+                UIHelper.verticalSpace(32.h),
+                CommonButton(
+                  text: 'পেমেন্ট নিশ্চিত করুন',
+                  icon: Icon(Icons.check, color: Colors.white, size: 20.sp),
+                  onPressed: () {
+                    // TODO: Handle save action
+                  },
+                ),
+              ],
             ),
           ),
         ),
@@ -147,11 +140,7 @@ class _CustomerPaymentReaminingScreenState extends State<CustomerPaymentReaminin
           ),
           child: Column(
             children: [
-              Image.asset(
-                icon,
-                height: 35.sp,
-                width: 35.sp,
-              ),
+              Image.asset(icon, height: 35.sp, width: 35.sp),
               SizedBox(height: 8.h),
               Text(
                 label,
@@ -170,7 +159,3 @@ class _CustomerPaymentReaminingScreenState extends State<CustomerPaymentReaminin
     );
   }
 }
-
-
-
-

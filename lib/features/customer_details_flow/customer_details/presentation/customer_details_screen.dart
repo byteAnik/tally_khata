@@ -7,6 +7,7 @@ import 'package:tally_khata/features/customer_details_flow/add_customer_reaminin
 import 'package:tally_khata/features/customer_details_flow/customer_details/presentation/widgets/customer_action_button.dart';
 import 'package:tally_khata/features/customer_details_flow/customer_details/presentation/widgets/customer_header_section.dart';
 import 'package:tally_khata/features/customer_details_flow/customer_payment_reamining/presentation/customer_payment_reamining_screen.dart';
+import 'package:tally_khata/features/customer_details_flow/customer_remainder/presentation/customer_remainder_screen.dart';
 import 'package:tally_khata/helpers/ui_helpers.dart';
 
 class CustomerDetailsScreen extends StatefulWidget {
@@ -85,11 +86,16 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
                         ),
                       ),
                       SizedBox(width: 12.w),
-                      Expanded(
-                        child: CustomerActionButton(
-                          icon: Icons.notifications_active_outlined,
-                          label: "রিমাইন্ড",
-                          isFilled: true,
+                      GestureDetector(
+                        onTap: () {
+                          Get.to(() => CustomerRemainderScreen());
+                        },
+                        child: Expanded(
+                          child: CustomerActionButton(
+                            icon: Icons.notifications_active_outlined,
+                            label: "রিমাইন্ড",
+                            isFilled: true,
+                          ),
                         ),
                       ),
                     ],

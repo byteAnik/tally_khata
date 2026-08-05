@@ -5,6 +5,7 @@ import 'package:tally_khata/features/customer_details_flow/customer_details/pres
 import 'package:tally_khata/features/home/presentation/widgets/blance_card.dart';
 import 'package:tally_khata/features/home/presentation/widgets/quick_action_card.dart';
 import 'package:tally_khata/features/home/presentation/widgets/transaction_item.dart';
+import 'package:tally_khata/features/notification/presentation/notification_screen.dart';
 
 final List<Map<String, dynamic>> dummyTransactions = [
   {
@@ -127,11 +128,16 @@ class HomeScreen1 extends StatelessWidget {
                       ),
                       child: Stack(
                         children: [
-                          Center(
-                            child: Icon(
-                              Icons.notifications_none_rounded,
-                              color: Colors.white,
-                              size: 26.sp,
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(() => NotificationScreen());
+                            },
+                            child: Center(
+                              child: Icon(
+                                Icons.notifications_none_rounded,
+                                color: Colors.white,
+                                size: 26.sp,
+                              ),
                             ),
                           ),
                           Positioned(

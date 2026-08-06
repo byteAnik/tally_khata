@@ -10,7 +10,8 @@ import 'package:tally_khata/features/add_customer/presentation/add_customer_scre
 import 'package:tally_khata/features/customer_details_flow/customer_details/presentation/customer_details_screen.dart';
 import 'package:tally_khata/features/customer_details_flow/customer_remainder/presentation/customer_remainder_screen.dart';
 import 'package:tally_khata/features/notification/presentation/notification_screen.dart';
-import 'package:tally_khata/features/shop_owner_map/presentation/shop_owner_map_screen.dart';
+import 'package:tally_khata/features/shop_owner/shop_owner_location_pin/presentation/shop_owner_location_pin_screen.dart';
+import 'package:tally_khata/features/shop_owner/shop_owner_map/presentation/shop_owner_map_screen.dart';
 import 'package:tally_khata/helpers/di.dart';
 import 'package:tally_khata/helpers/helper_methods.dart';
 import 'package:tally_khata/helpers/navigation_service.dart';

@@ -94,7 +94,9 @@ class _CommonTextFormFieldState extends State<CommonTextFormField> {
             controller: widget.controller,
 
             /// 🔥 🔥 MAIN FIX
-            textAlignVertical: widget.maxLines == 1 ? TextAlignVertical.center : TextAlignVertical.top,
+            textAlignVertical: widget.maxLines == 1
+                ? TextAlignVertical.center
+                : TextAlignVertical.top,
 
             obscureText: widget.isPassword ? _isObscured : widget.obscureText,
 
@@ -118,9 +120,8 @@ class _CommonTextFormFieldState extends State<CommonTextFormField> {
               hintText: widget.hintText,
 
               hintStyle: TextStyle(
-                
-                fontSize: 15.sp,
-                fontWeight: FontWeight.w700,
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w400,
                 color: const Color(0xFF0F172A),
               ),
 

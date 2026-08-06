@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:tally_khata/constants/app_colors.dart';
+import 'package:tally_khata/features/shop_owner/shop_owner_location_pin/presentation/shop_owner_location_pin_screen.dart';
 import 'package:tally_khata/helpers/ui_helpers.dart';
 
 class ShopOwnerMapScreen extends StatefulWidget {
@@ -72,63 +74,70 @@ class _ShopOwnerMapScreenState extends State<ShopOwnerMapScreen> {
                   separatorBuilder: (context, index) => SizedBox(height: 12.h),
                   itemBuilder: (context, index) {
                     final item = dummyMapItems[index];
-                    return Container(
-                      padding: EdgeInsets.all(16.r),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16.r),
-                        border: Border.all(
-                          color: const Color(0xFFE2E8F0),
-                          width: 1,
+                    return GestureDetector(
+                      onTap: () {
+                        if (index == 0) {
+                          Get.to(() => const ShopOwnerLocationPinScreen());
+                        }
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(16.r),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16.r),
+                          border: Border.all(
+                            color: const Color(0xFFE2E8F0),
+                            width: 1,
+                          ),
                         ),
-                      ),
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 48.w,
-                            height: 48.h,
-                            decoration: BoxDecoration(
-                              color: item['bgColor'] as Color,
-                              borderRadius: BorderRadius.circular(14.r),
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 48.w,
+                              height: 48.h,
+                              decoration: BoxDecoration(
+                                color: item['bgColor'] as Color,
+                                borderRadius: BorderRadius.circular(14.r),
+                              ),
+                              child: Icon(
+                                item['icon'] as IconData,
+                                color: item['iconColor'] as Color,
+                                size: 24.sp,
+                              ),
                             ),
-                            child: Icon(
-                              item['icon'] as IconData,
-                              color: item['iconColor'] as Color,
-                              size: 24.sp,
-                            ),
-                          ),
-                          SizedBox(width: 14.w),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  item['title'] as String,
-                                  style: TextStyle(
-                                    fontSize: 15.sp,
-                                    fontWeight: FontWeight.w600,
-                                    color: const Color(0xFF0F172A),
+                            SizedBox(width: 14.w),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    item['title'] as String,
+                                    style: TextStyle(
+                                      fontSize: 15.sp,
+                                      fontWeight: FontWeight.w600,
+                                      color: const Color(0xFF0F172A),
+                                    ),
                                   ),
-                                ),
-                                SizedBox(height: 4.h),
-                                Text(
-                                  item['subtitle'] as String,
-                                  style: TextStyle(
-                                    fontSize: 13.sp,
-                                    fontWeight: FontWeight.w500,
-                                    color: const Color(0xFF64748B),
+                                  SizedBox(height: 4.h),
+                                  Text(
+                                    item['subtitle'] as String,
+                                    style: TextStyle(
+                                      fontSize: 13.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xFF64748B),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                          SizedBox(width: 8.w),
-                          Icon(
-                            Icons.chevron_right,
-                            color: const Color(0xFF64748B),
-                            size: 22.sp,
-                          ),
-                        ],
+                            SizedBox(width: 8.w),
+                            Icon(
+                              Icons.chevron_right,
+                              color: const Color(0xFF64748B),
+                              size: 22.sp,
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },

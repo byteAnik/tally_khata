@@ -54,6 +54,7 @@ class AssetsImages {
   static String joloImage = 'assets/images/jolo_image.jpg'; 
   static String backgroundBlurImage = 'assets/images/background_blur_image.png';
   static String anik = 'assets/images/anik.jpg'; 
+  static String locationPinImage = 'assets/images/location_pin.png';
 
 
 

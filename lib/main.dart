@@ -6,18 +6,12 @@ import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:tally_khata/constants/app_colors.dart';
 import 'package:tally_khata/constants/custome_theme.dart';
-import 'package:tally_khata/features/add_customer/presentation/add_customer_screen.dart';
-import 'package:tally_khata/features/customer_details_flow/customer_details/presentation/customer_details_screen.dart';
-import 'package:tally_khata/features/customer_details_flow/customer_remainder/presentation/customer_remainder_screen.dart';
-import 'package:tally_khata/features/notification/presentation/notification_screen.dart';
-import 'package:tally_khata/features/shop_owner/shop_owner_location_pin/presentation/shop_owner_location_pin_screen.dart';
 import 'package:tally_khata/features/shop_owner/shop_owner_map/presentation/shop_owner_map_screen.dart';
 import 'package:tally_khata/helpers/di.dart';
 import 'package:tally_khata/helpers/helper_methods.dart';
 import 'package:tally_khata/helpers/navigation_service.dart';
 import 'package:tally_khata/helpers/register_provider.dart';
 import 'package:tally_khata/networks/dio/dio.dart';
-import 'package:tally_khata/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -85,5 +79,5 @@ class UtillScreenMobile extends StatelessWidget {
         );
       },
     );
-  }  
+  }
 }

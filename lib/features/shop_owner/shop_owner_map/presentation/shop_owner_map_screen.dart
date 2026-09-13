@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tally_khata/constants/app_colors.dart';
+import 'package:tally_khata/features/shop_owner/map_of_reaming_customer/presentation/map_of_reaming_customer_screen.dart';
+import 'package:tally_khata/features/shop_owner/rest_of_the_collection_rot/presentation/rest_of_the_collection_rot_screen.dart';
 import 'package:tally_khata/features/shop_owner/shop_owner_location_pin/presentation/shop_owner_location_pin_screen.dart';
 import 'package:tally_khata/helpers/ui_helpers.dart';
 
@@ -76,8 +78,18 @@ class _ShopOwnerMapScreenState extends State<ShopOwnerMapScreen> {
                     final item = dummyMapItems[index];
                     return GestureDetector(
                       onTap: () {
-                        if (index == 0) {
-                          Get.to(() => const ShopOwnerLocationPinScreen());
+                        switch (index) {
+                          case 0:
+                            Get.to(() => const ShopOwnerLocationPinScreen());
+                            break;
+
+                          case 1:
+                            Get.to(() => const MapOfReamingCustomerScreen());
+                            break;
+
+                          case 2:
+                            Get.to(() => RestOfTheCollectionRotScreen());
+                            break;
                         }
                       },
                       child: Container(

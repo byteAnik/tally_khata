@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 import 'package:tally_khata/constants/app_colors.dart';
 import 'package:tally_khata/constants/custome_theme.dart';
 import 'package:tally_khata/features/shop_owner/share_shop_owner_location/presentation/share_shop_owner_location_screen.dart';
-import 'package:tally_khata/features/shop_owner/shop_owner_map/presentation/shop_owner_map_screen.dart';
 import 'package:tally_khata/helpers/di.dart';
 import 'package:tally_khata/helpers/helper_methods.dart';
 import 'package:tally_khata/helpers/navigation_service.dart';
